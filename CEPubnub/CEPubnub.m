@@ -21,7 +21,7 @@ secretKey:    (NSString*) sec_key
 sslOn:        (BOOL)      ssl_on
 origin:       (NSString*) origin
 {
-    //pool          = [[NSAutoreleasePool alloc] init];
+    
     self          = [super init];
     publish_key   = pub_key;
     subscribe_key = sub_key;
@@ -37,12 +37,13 @@ origin:       (NSString*) origin
 
 +(NSString*) urlencode: (NSString*) string {
     
+	/*
 	return [string
 			stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding
 			];
+	*/
 	
-	
-	//return [(NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)(string), NULL, (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8) autorelease];
+	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)(string), NULL, (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8) autorelease];
 }
 +(NSString*) md5: (NSString*) input {
     const char* str = [input UTF8String];
@@ -223,8 +224,31 @@ delegate: (id)        delegate
 	 ];
 }
 
+-(void) shutdown {
+	/* 
+	 * can't delete items in a dictionary while iterating through it,
+	 * so collect channel names first, then nuke them
+	 */
+	
+	NSMutableArray *channels = [[NSMutableArray alloc] initWithCapacity:0];
+	
+	NSString *channel;
+	
+	for (channel in subscriptions) {
+		[channels addObject:channel];
+	}
+	
+	for (channel in channels) {
+		[self unsubscribe:channel];
+	}
+	
+	[channels removeAllObjects];
+	[channels release];
+}
+
 -(void) dealloc {
-	//SLog(@"DEALLOCING PUBNUB!!!!");
+	
+	[self shutdown];
 	
 	[subscriptions release];
 	[parser release];
@@ -263,8 +287,6 @@ delegate: (id)        delegate
 		
     while ((message = [messages nextObject])) {
 		
-		
-        //[delegate callback: message];
 		if (delegate) {
 			
 			
@@ -377,7 +399,6 @@ delegate: (id)        delegate
 
 @implementation CEPubnubTimeDelegate
 -(void) callback: (id) response {
-    //[delegate callback: [[parser objectWithString: response] objectAtIndex:0]];
 	
 	if (delegate) {
 		if ([delegate respondsToSelector:@selector(pubnub:didReceiveTime:)]) {

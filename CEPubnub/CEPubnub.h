@@ -18,7 +18,6 @@
     NSString* scheme;
     NSString* host;
     NSMutableDictionary* subscriptions;
-    //NSAutoreleasePool* pool;
     SBJsonParser* parser;
     SBJsonWriter* writer;
 }
@@ -58,6 +57,7 @@
 
 -(void) unsubscribe: (NSString*) channel;
 -(void) time: (id) delegate;
+-(void) shutdown;
 @end
 
 @interface CEPubnubSubscribeDelegate: CEPubnubResponse @end

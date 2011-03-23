@@ -21,13 +21,12 @@ host:     (NSString*) host
 path:     (NSString*) path
 callback: (CEPubnubResponse*) callback;
 {
-    //pool     = [[NSAutoreleasePool alloc] init];
 	response = nil;
 	receivedData = [[NSMutableData alloc] initWithLength:0];
 	
     delegate = callback;
 	[delegate retain];
-	//NSLog(@"callback retainCount: %d", [delegate retainCount]);
+	
 	
     NSURL *url = [NSURL
 				  URLWithString: [NSString
@@ -89,7 +88,6 @@ didFailWithError: (NSError *) error
 
 - (void) dealloc 
 {
-	//NSLog(@"CALLING DEALLOC of CEPubnubRequest!!");
 	if (delegate) {
 		[delegate release];
 	}
@@ -150,34 +148,22 @@ channel:  (NSString*) channel_o
 
 
 -(void) callback: (id) response {
-    //[delegate callback: [parser objectWithString: response]];
-	logit(@"x");
+    
 	//override in subclass
-	/*
-	if (delegate) {
-		logit(@"calling delegate!");
-		[delegate pubub:pubnub subscriptionDidReceiveObject:response onChannel:channel];
-	}
-	 */
+	
 }
 
 
 -(void) fail: (id) response {
-    //[delegate fail: response];
-	logit(@"x");
+    
 	// override in subclass
-	/*
-	if (delegate) {
-		logit(@"calling delegate fail");
-		[delegate pubnub:pubnub subscriptionDidFailWithResponse:response onChannel:channel];
-	}
-	 */
+	
 }
 
 
 -(void) dealloc
 {
-	//NSLog(@"CALLING DEALLOC!!");
+	
 	if (parser) {
 		[parser release];
 	}
@@ -185,7 +171,6 @@ channel:  (NSString*) channel_o
 		[pubnub release];
 		pubnub = nil;
 	}
-	//[channel release];
 	
 	[super dealloc];
 }

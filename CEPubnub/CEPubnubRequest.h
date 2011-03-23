@@ -56,7 +56,6 @@ channel: (NSString*) channel_o;
 	
     NSString *response;
 	NSURLConnection *connection;
-    //NSAutoreleasePool *pool;
 	
 @private
 	NSMutableData *receivedData;

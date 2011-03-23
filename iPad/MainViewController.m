@@ -82,7 +82,6 @@
 	[pubnub subscribe: @"hello_world_objective_d" delegate:self];
 	[pubnub subscribe: @"hello_world_objective_e" delegate:self];
 	
-	
 }
 
 

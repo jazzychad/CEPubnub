@@ -164,9 +164,9 @@
 			children = (
 				63E4A0C21339DE4300861572 /* CEPubnub.h */,
 				63E4A0C31339DE4300861572 /* CEPubnub.m */,
-				63E4A0C41339DE4300861572 /* CEPubnubDelegate.h */,
 				63E4A0C51339DE4300861572 /* CEPubnubRequest.h */,
 				63E4A0C61339DE4300861572 /* CEPubnubRequest.m */,
+				63E4A0C41339DE4300861572 /* CEPubnubDelegate.h */,
 			);
 			path = CEPubnub;
 			sourceTree = "<group>";
