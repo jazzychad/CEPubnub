@@ -62,7 +62,7 @@ CEPubnub is an iOS Objective-C library wrapper for the Pubnub realtime messaging
 
 MIT License
 
- Copyright (c) 2011 Chad Etzel
+Copyright (c) 2011 Chad Etzel
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
