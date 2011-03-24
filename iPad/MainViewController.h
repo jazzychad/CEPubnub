@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "CEPubnub.h"
-#import "CEPubnubDelegate.h"
+
 
 @interface MainViewController : UIViewController <CEPubnubDelegate> {
 

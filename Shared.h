@@ -1,6 +1,6 @@
 
 //
-// Prefix header for all source files of the target in the project
+// Some useful macros
 //
 
 
