@@ -134,7 +134,7 @@ pubnub:   (CEPubnub*) pubnub_o
     delegate = callback;
     parser   = [SBJsonParser new];
     [self setPubnub:pubnub_o];
-	channel  = nil;
+    self.channel  = nil;
     return self;
 }
 
@@ -148,8 +148,8 @@ channel:  (NSString*) channel_o
     delegate = callback;
     parser   = [SBJsonParser new];
     //pubnub   = pubnub_o;
-	[self setPubnub:pubnub_o];
-    channel  = channel_o;
+    [self setPubnub:pubnub_o];
+    self.channel  = channel_o;
     return self;
 }
 
@@ -162,8 +162,8 @@ channel:  (NSString*) channel_o
     delegate = nil;
     parser   = [SBJsonParser new];
     //pubnub   = pubnub_o;
-	[self setPubnub:pubnub_o];
-    channel  = channel_o;
+    [self setPubnub:pubnub_o];
+    self.channel  = channel_o;
     return self;
 }
 
@@ -192,7 +192,7 @@ channel:  (NSString*) channel_o
 		[pubnub release];
 		pubnub = nil;
 	}
-	
+	self.channel = nil;
 	[super dealloc];
 }
 
